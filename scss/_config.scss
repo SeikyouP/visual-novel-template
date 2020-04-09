@@ -1,0 +1,77 @@
+// Main Colors
+$primary-color: transparent;
+$secondary-color: transparent;
+
+// Color Accents (if any)
+$first-accent: transparent;
+$second-accent: transparent;
+$third-accent: transparent;
+$fourth-accent: transparent;
+
+// Light/Dark Colors
+$light-color: #f2f2f2;
+$gray-color: #888;
+$dark-color: #333;
+$darker-color: #222;
+
+// Neutral Colors
+$white: white;
+$gray: gray;
+$black: black;
+
+// Default Background Color
+$defaut-color: transparent;
+
+// Font Stacks (Default)
+$font-stack: 'Nunito', 'Open Sans', 'Lato', 'Exo 2', 'Montserrat', sans-serif;
+
+// Font Stacks (Web Safe Fonts)
+$font-stack-serif: 'Times New Roman', Times, serif;
+$font-stack-sans: Arial, Helvetica, sans-serif;
+
+// Set Default Shadow
+$default-shadow: 2px 2px 8px #888888;
+
+// Set Alternative Shadow
+$alt-shadow: 2px 2px 4px #888888;
+
+// Set Default Inset Shadow
+$alt-shadow: inset 2px 2px 4px #888888;
+
+// Set Alternative Inset Shadow
+$alt-shadow: inset 2px 2px 4px #888888;
+
+// Set Color Lightness
+$primary-color-light: lighten($primary-color, 10%);
+$secondary-color-light: lighten($secondary-color, 10%);
+
+// Set Color Darkness
+$primary-color-dark: darken($primary-color, 10%);
+$secondary-color-dark: darken($secondary-color, 10%);
+
+// Set Default Container Width
+$container-width: 1080px;
+
+// Set Alternative Container Width
+$container-width-alt: 960px;
+
+// Set Header Container Width
+$header-width: 1440px;
+
+// Set Footer Container Width
+$footer-width: 1440px;
+
+// Functions (Set Dynamic Text Color)
+@function set-color($color) {
+  @if (lightness($color) >= 45 or $color == transparent) {
+    @return $black;
+  } @else {
+    @return $white;
+  }
+}
+
+// Mixins (Set Dynamic Text Color)
+@mixin dynamic-color($color) {
+  background-color: $defaut-color;
+  color: set-color($defaut-color);
+}

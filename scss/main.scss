@@ -1,0 +1,52 @@
+@import 'reset';
+@import 'animate';
+@import 'hamburgers';
+@import 'config';
+
+a {
+  text-decoration: none;
+}
+
+i {
+  box-sizing: content-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+a,
+p {
+  color: set-color($defaut-color);
+}
+
+body {
+  font-family: $font-stack;
+  overflow: auto;
+  @include dynamic-color($defaut-color);
+}
+
+.container {
+  max-width: $container-width;
+  margin: auto;
+}
+
+section {
+  display: flex;
+  flex-direction: column;
+
+  &:first-child {
+    height: 100vh;
+  }
+
+  .start {
+    margin: auto;
+    text-align: center;
+
+    h1 {
+      font-size: 4rem;
+    }
+  }
+}

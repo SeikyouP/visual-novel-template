@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="animation.css">
+  <link href="https://fonts.googleapis.com/css?family=Exo+2" rel="stylesheet">
+  <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">
+  <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+  <script src="http://code.jquery.com/jquery-1.7.2.min.js"></script>
+  <script src="http://code.jquery.com/ui/1.8.21/jquery-ui.min.js"></script>
+  <script>$(function() {$(".drag").draggable();});</script>
+</head>
+
+<body>
+  <h1 id="message">Can you save the nekos?</h1>
+  
+  <main>
+    <div class="chara-box">
+      <div id="brand">
+        <a href="#"><img id="logo" src="images/logo.png"></a>
+      </div>
+
+      <div id="chara" class="drag">
+        <div id="chara-inner">
+          <img class="main" src="images/chara/seiko_default.png">
+          <img id="face01" class="loop preload" src="images/chara/seiko_expression1.png">
+          <img id="face02" class="loop" src="images/chara/seiko_expression2.png">
+          <img id="face03" class="loop" src="images/chara/seiko_expression3.png">
+        </div>
+      </div>
+
+      <div class="chara-menu">
+        <div class="chara-name">
+          <h1>Seiko Nekomiya</h1>
+        </div>
+
+        <ul>
+          <h2>Main Heroines</h2>
+          <li id="seiko-btn">Seiko</li>
+          <li id="sayaka-btn">Sayaka</li>
+          <li id="asako-btn">Asako</li>
+          <li id="miyame-btn">Miyame</li>
+        </ul>
+
+        <ul>
+          <h2>Minor Characters</h2>
+          <li id="kat-btn">Kat</li>
+          <!-- <li id="sabrina-btn">Sabrina</li> -->
+          <li id="whiteneko-btn">White Neko</li>
+          <!-- <li id="rei-btn">Rei</li> -->
+        </ul>
+
+        <ul>
+          <h2>Male Characters</h2>
+          <li id="akihiro-btn" class="male">Akihiro</li>
+          <li id="kowayama-btn" class="male">Kowayama</li>
+          <li id="masaru-btn" class="male">Masaru</li>
+          <li id="nagamichi-btn" class="male">Nagamichi</li>
+          <li id="sato-btn" class="male">Sato</li>
+        </ul>
+
+        <ul>
+          <h2>Backer Exclusives</h2>
+          <li id="allie-btn">Allie</li>
+          <li id="bubastis-btn">Bubastis</li>
+          <li id="mingita-btn">Mingita</li>
+        </ul>
+
+        <div class="chara-info">
+          <h2>Character Info</h2>
+          <p>Seiko is a sweet and hardworking girl. Everything about her is a picture of perfection until you see her grades. Polite and understanding, she serves as Sayaka's closest friend, and mediator between her and Yutei. Though she is earnest and understanding, she doesn't express much of her feelings and concerns.</p>
+        </div>
+
+        <div class="reset">
+          <h2>Reset Position</h2>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Copyright &copy;2018 Neat Studios All rights Reserved.</p>
+  </footer>
+  <script src="main.js"></script> 
+</body>
+</html>
