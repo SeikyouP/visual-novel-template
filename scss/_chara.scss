@@ -1,0 +1,106 @@
+#logo {
+  position: relative;
+  display: inline-block;
+  height: 5rem;
+  width: auto;
+}
+
+main {
+  position: relative;
+  margin: auto;
+}
+
+main #logo {
+  width: auto;
+  height: 5rem;
+  padding: 0 1rem;
+}
+
+.chara-box {
+  background: linear-gradient(180deg, #ffb9b5 60%, #4e86fd);
+  opacity: 1;
+  max-width: 1440px;
+  margin: auto;
+  overflow: hidden;
+  height: inherit;
+  transition: 1s ease-in-out;
+}
+
+.loop:not(:first-child) {
+  transition: opacity 0.25s ease-in-out;
+  opacity: 0;
+}
+
+.loop:first-child {
+  opacity: 1;
+}
+
+#chara {
+  position: relative;
+  top: -80px;
+  left: 0;
+  z-index: auto;
+}
+
+#chara-inner {
+  position: relative;
+  top: 0;
+  left: 0;
+}
+
+#chara img {
+  position: absolute;
+  max-width: 50%;
+  max-height: 1800px;
+  right: 0;
+  backface-visibility: hidden;
+}
+
+.chara-menu {
+  text-align: left;
+  max-width: 480px;
+  margin: 1rem;
+}
+
+.chara-name h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.chara-menu li,
+.chara-info p {
+  margin: 0.3rem 0.3rem 0.3rem 0;
+}
+
+.chara-menu li,
+.chara-info p,
+.reset h2,
+.demo h2 {
+  background: #fff;
+  position: relative;
+  border: 2px solid gray;
+  border-radius: 10px;
+  padding: 0.5rem;
+  transition: 0.5s ease;
+  display: inline-block;
+  cursor: pointer;
+  z-index: 1;
+}
+
+.chara-menu li:hover {
+  background: #4e86fd;
+}
+
+.chara-info p {
+  font-size: 1.2rem;
+  line-height: 1.2;
+  display: block;
+  cursor: initial;
+  margin-bottom: 0.3rem;
+  animation: none;
+}
+
+.reset {
+  position: relative;
+  bottom: 0;
+}

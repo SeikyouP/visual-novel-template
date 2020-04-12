@@ -1,84 +1,25 @@
-var chara = document.querySelector('#chara');
-var inner = document.querySelector('#chara-inner');
-var loop = document.querySelectorAll('.loop');
-var fade = document.querySelector('.chara-box');
-var menu = document.querySelector('.chara-menu');
-var info = document.querySelector('.chara-info p');
-var title = document.querySelector('.chara-name h1');
-var male = document.querySelector('.male');
-var message = document.querySelector('#message');
-var logo = document.querySelector('#logo');
+let chara = document.querySelector('#chara');
+let inner = document.querySelector('#chara-inner');
+let loop = document.querySelectorAll('.loop');
+let fade = document.querySelector('.chara-box');
+let menu = document.querySelector('.chara-menu');
+let info = document.querySelector('.chara-info p');
+let title = document.querySelector('.chara-name h1');
+let male = document.querySelector('.male');
+let logo = document.querySelector('#logo');
 
-var resetBtn = document.querySelector('.reset');
+let resetBtn = document.querySelector('.reset');
 
-var main = document.querySelector('.main');
-var face1 = document.querySelector('#face01');
-var face2 = document.querySelector('#face02');
-var face3 = document.querySelector('#face03');
+let main = document.querySelector('.main');
+let face1 = document.querySelector('#face01');
+let face2 = document.querySelector('#face02');
+let face3 = document.querySelector('#face03');
 
-var header = document.querySelector('header');
-var content = document.querySelector('main');
+let header = document.querySelector('header');
+let content = document.querySelector('main');
 
-var time = setInterval(auto, 3000);
-var current = 0;
-
-var guy;
-var gal;
-
-var mq = window.matchMedia('(max-width: 960px)');
-
-const observer = lozad();
-observer.observe();
-
-const coolImage = document.querySelector('.image-to-load-first')
-// ... trigger the load of a image before it appears on the viewport
-observer.triggerLoad(coolImage);
-
-// Skips the first fade animation after page loads
-// Note: If the CSS animation plays at x seconds, the timeout should be set longer than x seconds. I would add at least 0.5 more seconds just to be safe
-// Note: This function will disable if the content inside the timeout function was added on any event handler
-function init() {
-  setTimeout(function() {
-    document.body.classList.remove('preload');
-  }, 2000);
-}
-
-// Disables the message screen when you click
-document.body.addEventListener('click', body);
-function body() {
-  update();
-  initEnd();
-  resetTime();
-
-  content.style.opacity = '1';
-  content.style.animation = 'none';
-  logo.style.opacity = '1';
-  logo.style.animation = 'none';
-
-  document.body.removeEventListener('click', body);
-  message.removeEventListener('animationstart', initStart);
-  message.removeEventListener('animationend', initEnd);
-}
-
-// Disables the 'draggable' functionally while the message screen starts
-message.addEventListener('animationstart', initStart);
-function initStart() {
-  menu.removeEventListener('click', charaMenu);
-  $('.drag').draggable('disable');
-  clearInterval(time);
-
-  setTimeout(function() {
-    resetTime();
-  }, 4000);
-}
-
-// Enables the 'draggable' functionally while the message screen ends
-message.addEventListener('animationend', initEnd);
-function initEnd() {
-  menu.addEventListener('click', charaMenu);
-  message.style.display = 'none';
-  $('.drag').draggable('enable');
-}
+let guy;
+let gal;
 
 // When the 'reset button' is clicked
 // It resets character to default position, face expression, and time inverval
@@ -109,7 +50,7 @@ function auto() {
 }
 
 function update() {
-  for (var i = 0; i < loop.length; i++) {
+  for (let i = 0; i < loop.length; i++) {
     if (i === current) {
       loop[i].style.opacity = '1';
     } else {
@@ -121,7 +62,7 @@ function update() {
 // Reset/Restart Time Interval
 function resetTime() {
   clearInterval(time);
-  time = setInterval(auto, 3000);
+  time = setInterval(auto, seconds);
 }
 
 // Fade in character slide animation
@@ -145,22 +86,22 @@ function end() {
 }
 
 // Pauses the character face animation when hovered
-chara.addEventListener('mouseenter', function(e) {
+chara.addEventListener('mouseenter', function (e) {
   clearInterval(time);
 });
 
 // Unpauses the character face animation when not hovered
-chara.addEventListener('mouseleave', function(e) {
+chara.addEventListener('mouseleave', function (e) {
   resetTime();
 });
 
 // Increases the z-index to 5 when holding down the mouse
-chara.addEventListener('mousedown', function(e) {
+chara.addEventListener('mousedown', function (e) {
   chara.style.zIndex = '5';
 });
 
 // Sets the z-index to default when you not holding down the mouse
-chara.addEventListener('mouseup', function(e) {
+chara.addEventListener('mouseup', function (e) {
   chara.style.zIndex = 'auto';
 });
 
@@ -177,12 +118,12 @@ function enable() {
 }
 
 // Disables 'click' event while the character image starts sliding
-fade.addEventListener('animationstart', function() {
+fade.addEventListener('animationstart', function () {
   menu.removeEventListener('click', charaMenu);
 });
 
 // Enables 'click' event while the character image finishes sliding
-fade.addEventListener('animationend', function(e) {
+fade.addEventListener('animationend', function (e) {
   if (e.target.className === 'male') {
     clearTimeout(gal);
   } else {
@@ -212,24 +153,16 @@ function charaMenu(e) {
     } else {
       clearTimeout(guy);
     }
-    var guy = setTimeout(male, 500);
+    let guy = setTimeout(male, 500);
     function male() {
       reset();
       start();
-
-      if (mq.matches) {
-        resetBtn.style.display = 'none';
-      } else {
-        resetBtn.style.display = 'none';
-      }
 
       switch (e.target.id) {
         // Male Characters
         case 'akihiro-btn':
           title.textContent = 'Akihiro Sokuru';
-          fade.style.background = 'var(--akihiro)';
-          fade.style.background =
-            'linear-gradient(180deg, #D03637 60%, #D5DDEA)';
+          fade.style.background = 'linear-gradient(180deg, #D03637 60%, #D5DDEA)';
 
           main.src = 'images/chara/akihiro_default.png';
           face1.src = 'images/chara/akihiro_expression1.png';
@@ -242,9 +175,7 @@ function charaMenu(e) {
 
         case 'kowayama-btn':
           title.textContent = 'Totake Kowayama';
-          fade.style.background = 'var(--kowayama)';
-          fade.style.background =
-            'linear-gradient(180deg, #766A91 60%, #832826)';
+          fade.style.background = 'linear-gradient(180deg, #766A91 60%, #832826)';
 
           main.src = 'images/chara/kowayama_default.png';
           face1.src = '';
@@ -257,9 +188,7 @@ function charaMenu(e) {
 
         case 'masaru-btn':
           title.textContent = 'Masaru Sokuru';
-          fade.style.background = 'var(--masaru)';
-          fade.style.background =
-            'linear-gradient(180deg, #FDF6E5 60%, #514B3F)';
+          fade.style.background = 'linear-gradient(180deg, #FDF6E5 60%, #514B3F)';
 
           main.src = 'images/chara/masaru_default.png';
           face1.src = 'images/chara/masaru_expression1.png';
@@ -272,9 +201,7 @@ function charaMenu(e) {
 
         case 'nagamichi-btn':
           title.textContent = 'Masahiro Nagamichi';
-          fade.style.background = 'var(--nagamichi)';
-          fade.style.background =
-            'linear-gradient(180deg, #E2CDBA 60%, #383A44)';
+          fade.style.background = 'linear-gradient(180deg, #E2CDBA 60%, #383A44)';
 
           main.src = 'images/chara/nagamichi_default.png';
           face1.src = 'images/chara/nagamichi_expression1.png';
@@ -287,9 +214,7 @@ function charaMenu(e) {
 
         case 'sato-btn':
           title.textContent = 'Sato';
-          fade.style.background = 'var(--sato)';
-          fade.style.background =
-            'linear-gradient(180deg, #CF8E8A 60%, #494149)';
+          fade.style.background = 'linear-gradient(180deg, #CF8E8A 60%, #494149)';
 
           main.src = 'images/chara/sato_default.png';
           face1.src = '';
@@ -318,24 +243,16 @@ function charaMenu(e) {
       clearTimeout(guy);
     }
 
-    var gal = setTimeout(female, 500);
+    let gal = setTimeout(female, 500);
     function female() {
       reset();
       start();
-
-      if (mq.matches) {
-        resetBtn.style.display = 'none';
-      } else {
-        resetBtn.style.display = 'inline-block';
-      }
 
       switch (e.target.id) {
         // Main Heroines
         case 'seiko-btn':
           title.textContent = 'Seiko Nekomiya';
-          fade.style.background = 'var(--seiko)';
-          fade.style.background =
-            'linear-gradient(180deg, #ffb9b5 60%, #4e86fd)';
+          fade.style.background = 'linear-gradient(180deg, #ffb9b5 60%, #4e86fd)';
 
           main.src = 'images/chara/seiko_default.png';
           face1.src = 'images/chara/seiko_expression1.png';
@@ -348,9 +265,7 @@ function charaMenu(e) {
 
         case 'sayaka-btn':
           title.textContent = 'Sayaka Nyakumi';
-          fade.style.background = 'var(--sayaka)';
-          fade.style.background =
-            'linear-gradient(180deg, #f4deb5 60%, #832826)';
+          fade.style.background = 'linear-gradient(180deg, #f4deb5 60%, #832826)';
 
           main.src = 'images/chara/sayaka_default.png';
           face1.src = 'images/chara/sayaka_expression1.png';
@@ -363,9 +278,7 @@ function charaMenu(e) {
 
         case 'asako-btn':
           title.textContent = 'Asako Sakashi';
-          fade.style.background = 'var(--asako)';
-          fade.style.background =
-            'linear-gradient(180deg, #E2CDBA 60%, #832826)';
+          fade.style.background = 'linear-gradient(180deg, #E2CDBA 60%, #832826)';
 
           main.src = 'images/chara/asako_default.png';
           face1.src = 'images/chara/asako_expression1.png';
@@ -378,9 +291,7 @@ function charaMenu(e) {
 
         case 'miyame-btn':
           title.textContent = 'Miyame Shukufu';
-          fade.style.background = 'var(--miyame)';
-          fade.style.background =
-            'linear-gradient(180deg, #FFE5F7 60%, #832826)';
+          fade.style.background = 'linear-gradient(180deg, #FFE5F7 60%, #832826)';
 
           main.src = 'images/chara/miyame_default.png';
           face1.src = 'images/chara/miyame_expression1.png';
@@ -394,9 +305,7 @@ function charaMenu(e) {
         // Minor Characters
         case 'kat-btn':
           title.textContent = 'Kat';
-          fade.style.background = 'var(--kat)';
-          fade.style.background =
-            'linear-gradient(180deg, #A59BBB 60%, #232323)';
+          fade.style.background = 'linear-gradient(180deg, #A59BBB 60%, #232323)';
 
           main.src = 'images/chara/kat_default.png';
           face1.src = 'images/chara/kat_expression1.png';
@@ -409,9 +318,7 @@ function charaMenu(e) {
 
         case 'sabrina-btn':
           title.textContent = 'Sabrina Nyakumi';
-          fade.style.background = 'var(--sabrina)';
-          fade.style.background =
-            'linear-gradient(180deg, #f4deb5 60%, #4C4F70)';
+          fade.style.background = 'linear-gradient(180deg, #f4deb5 60%, #4C4F70)';
 
           main.src = 'images/chara/sabrina_default.png';
           face1.src = 'images/chara/sabrina_expression1.png';
@@ -424,9 +331,7 @@ function charaMenu(e) {
 
         case 'whiteneko-btn':
           title.textContent = 'White Neko';
-          fade.style.background = 'var(--whiteneko)';
-          fade.style.background =
-            'linear-gradient(180deg, #608BAF 60%, #832826)';
+          fade.style.background = 'linear-gradient(180deg, #608BAF 60%, #832826)';
 
           main.src = 'images/chara/whiteneko_default.png';
           face1.src = 'images/chara/whiteneko_expression1.png';
@@ -439,9 +344,7 @@ function charaMenu(e) {
 
         case 'rei-btn':
           title.textContent = 'Rei';
-          fade.style.background = 'var(--rei)';
-          fade.style.background =
-            'linear-gradient(180deg, #608BAF 60%, #832826)';
+          fade.style.background = 'linear-gradient(180deg, #608BAF 60%, #832826)';
 
           main.src = 'images/chara/rei_default.png';
           face1.src = 'images/chara/rei_expression1.png';
@@ -455,9 +358,7 @@ function charaMenu(e) {
         // Backer Exclusives
         case 'allie-btn':
           title.textContent = 'Allie Gato';
-          fade.style.background = 'var(--allie)';
-          fade.style.background =
-            'linear-gradient(180deg, #7366BA 60%, #EEA8DC)';
+          fade.style.background = 'linear-gradient(180deg, #7366BA 60%, #EEA8DC)';
 
           main.src = 'images/chara/allie_default.png';
           face1.src = 'images/chara/allie_expression1.png';
@@ -470,9 +371,7 @@ function charaMenu(e) {
 
         case 'bubastis-btn':
           title.textContent = 'Bubastis';
-          fade.style.background = 'var(--bubastis)';
-          fade.style.background =
-            'linear-gradient(180deg, #EFC6A2 60%, #B47560)';
+          fade.style.background = 'linear-gradient(180deg, #EFC6A2 60%, #B47560)';
 
           main.src = 'images/chara/bubastis_default.png';
           face1.src = 'images/chara/bubastis_expression1.png';
@@ -485,9 +384,7 @@ function charaMenu(e) {
 
         case 'mingita-btn':
           title.textContent = 'Mingita';
-          fade.style.background = 'var(--mingita)';
-          fade.style.background =
-            'linear-gradient(180deg, #EF7468 60%, #832826)';
+          fade.style.background = 'linear-gradient(180deg, #EF7468 60%, #832826)';
 
           main.src = 'images/chara/mingita_default.png';
           face1.src = 'images/chara/mingita_expression1.png';
@@ -495,7 +392,7 @@ function charaMenu(e) {
           face3.src = 'images/chara/mingita_expression3.png';
 
           info.textContent =
-            'A fun sarcastic character whose need for money causes her to show up in various places randomly due to her constant search for a new part-time job.';
+            'A fun sarcastic character whose need for money causes her to show up in letious places randomly due to her constant search for a new part-time job.';
           break;
 
         default:
@@ -505,5 +402,133 @@ function charaMenu(e) {
   }
 }
 
-init();
+// -------------------------------------------------------------
+// -------------------------------------------------------------
+
+let images = document.querySelectorAll('.slide');
+let dots = document.querySelectorAll('.dot');
+let left = document.querySelector('.left-arrow');
+let right = document.querySelector('.right-arrow');
+let animate = document.querySelectorAll('.fade');
+
+const seconds = 5000;
+let time = setInterval(auto, seconds);
+let current = 0;
+
+// Skips the first fade animation after page loads
+// Note: If the CSS animation plays at x seconds, the timeout should be set longer than x seconds. I would add at least 0.5 more seconds just to be safe
+// Note: This function will disable if the content inside the timeout function was added on any event handler
+function delay() {
+  setTimeout(function () {
+    document.body.className = '';
+  }, 1000);
+}
+
+// Reset slider
+function reset() {
+  for (let i = 0; i < images.length; i++) {
+    images[0].style.display = 'none';
+    dots[0].id = '';
+  }
+}
+
+// Automate slider
+function auto() {
+  current = (current + 1) % dots.length;
+  init();
+}
+
+// Init slider
+function init() {
+  reset();
+  for (let i = 0; i < dots.length; i++) {
+    if (current === i) {
+      images[i].style.display = 'block';
+      dots[i].id = 'active';
+    } else {
+      images[i].style.display = 'none';
+      dots[i].id = '';
+    }
+  }
+}
+
+// Manual slider
+for (let i = 0; i < dots.length; i++) {
+  dots[i].addEventListener('click', function (e) {
+    document.body.className = '';
+    if (current === i || e.target.className !== 'dot') {
+      return;
+    } else {
+      clearInterval(time);
+      time = setInterval(auto, seconds);
+    }
+    current = i;
+    init();
+  });
+}
+
+// Left arrow click
+left.addEventListener('click', function () {
+  document.body.className = '';
+  if (current === 0) {
+    current = dots.length - 1;
+  } else {
+    current--;
+  }
+  init();
+});
+
+// Right arrow click
+right.addEventListener('click', function () {
+  document.body.className = '';
+  if (current === dots.length - 1) {
+    current = 0;
+  } else {
+    current++;
+  }
+  init();
+});
+
+// Stop automatic slide when hovered
+for (let i = 0; i < images.length; i++) {
+  images[i].addEventListener('mouseover', function () {
+    clearInterval(time);
+  });
+  init();
+}
+
+// Start automatic slide when not hovered
+for (let i = 0; i < images.length; i++) {
+  images[i].addEventListener('mouseout', function () {
+    clearInterval(time);
+    time = setInterval(auto, seconds);
+  });
+  init();
+}
+
+// Stop automatic slider when left arrow hovered
+left.addEventListener('mouseenter', function () {
+  clearInterval(time);
+});
+
+// Stop automatic slider when right arrow hovered
+right.addEventListener('mouseenter', function () {
+  clearInterval(time);
+});
+
+// Stop automatic slider when left arrow hovered
+left.addEventListener('mouseleave', function () {
+  clearInterval(time);
+  time = setInterval(auto, seconds);
+});
+
+// Stop automatic slider when right arrow hovered
+right.addEventListener('mouseleave', function () {
+  clearInterval(time);
+  time = setInterval(auto, seconds);
+});
+
+reset();
 update();
+delay();
+init();
