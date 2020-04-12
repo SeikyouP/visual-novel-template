@@ -35,15 +35,15 @@ body {
   font-family: $font-stack;
   overflow: auto;
   @include dynamic-color($defaut-color);
+
+  &.preload * {
+    animation-duration: 0s !important;
+  }
 }
 
 .container {
   max-width: $container-width;
   margin: auto;
-}
-
-.preload * {
-  animation-duration: 0s !important;
 }
 
 header {
