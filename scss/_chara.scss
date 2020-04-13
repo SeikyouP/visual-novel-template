@@ -5,25 +5,12 @@
   width: auto;
 }
 
-main {
-  position: relative;
-  margin: auto;
-}
-
-main #logo {
-  width: auto;
-  height: 5rem;
-  padding: 0 1rem;
-}
-
 .chara-box {
-  background: linear-gradient(180deg, #ffb9b5 60%, #4e86fd);
+  background: rgb(251, 229, 199);
   opacity: 1;
   max-width: 1440px;
-  margin: auto;
   overflow: hidden;
-  height: inherit;
-  transition: 1s ease-in-out;
+  height: 100vh;
 }
 
 .loop:not(:first-child) {

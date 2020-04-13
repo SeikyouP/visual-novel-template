@@ -143,21 +143,3 @@ header {
     }
   }
 }
-
-section {
-  display: flex;
-  flex-direction: column;
-
-  &:first-child {
-    height: 100vh;
-  }
-
-  .start {
-    margin: auto;
-    text-align: center;
-
-    h1 {
-      font-size: 4rem;
-    }
-  }
-}
