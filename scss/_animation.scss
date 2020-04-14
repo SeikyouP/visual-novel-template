@@ -1,39 +1,31 @@
 @keyframes start {
   0% {
     left: 50px;
+    opacity: 0;
+  }
+
+  10% {
+    opacity: 0;
   }
 
   100% {
     left: 0;
+    opacity: 1;
   }
 }
 
 @keyframes end {
   0% {
     left: 0;
+    opacity: 1;
   }
 
-  100% {
-    left: -50px;
-  }
-}
-
-@keyframes fade-in {
-  0% {
+  90% {
     opacity: 0;
   }
 
   100% {
-    opacity: 1;
-  }
-}
-
-@keyframes fade-out {
-  0% {
-    opacity: 1;
-  }
-
-  100% {
+    left: -50px;
     opacity: 0;
   }
 }

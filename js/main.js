@@ -194,11 +194,10 @@
 
   // Fade in character slide animation
   function start() {
-    $('#chara-inner').fadeIn();
-    inner.style.animation = 'start 0.5s 1 forwards';
-    info.style.animation = 'fade-in 0.5s 1 forwards';
-    title.style.animation = 'fade-in 0.5s 1 forwards';
-    resetBtn.style.animation = 'fade-in 0.5s 1 forwards';
+    inner.style.animation = 'start 0.75s 1 forwards';
+    info.style.animation = 'fadeIn 0.75s 1 forwards';
+    title.style.animation = 'fadeIn 0.75s 1 forwards';
+    resetBtn.style.animation = 'fadeIn 0.75s 1 forwards';
     chara.style.zIndex = 'auto';
   }
 
@@ -206,11 +205,10 @@
   function end() {
     document.body.className = '';
     clearInterval(time);
-    $('#chara-inner').fadeOut();
-    inner.style.animation = 'end 0.5s 1 forwards';
-    info.style.animation = 'fade-out 0.5s 1 forwards';
-    title.style.animation = 'fade-out 0.5s 1 forwards';
-    resetBtn.style.animation = 'fade-out 0.5s 1 forwards';
+    inner.style.animation = 'end 0.75s 1 forwards';
+    info.style.animation = 'fadeOut 0.75s 1 forwards';
+    title.style.animation = 'fadeOut 0.75s 1 forwards';
+    resetBtn.style.animation = 'fadeOut 0.75s 1 forwards';
   }
 
   // Pauses the character face animation when hovered
@@ -281,7 +279,7 @@
       } else {
         clearTimeout(guy);
       }
-      let guy = setTimeout(male, 500);
+      let guy = setTimeout(male, 750);
       function male() {
         reset();
         start();
@@ -356,7 +354,7 @@
         clearTimeout(guy);
       }
 
-      let gal = setTimeout(female, 500);
+      let gal = setTimeout(female, 750);
       function female() {
         reset();
         start();

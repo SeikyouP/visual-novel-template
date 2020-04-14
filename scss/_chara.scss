@@ -6,7 +6,7 @@
 }
 
 .chara-box {
-  background: rgb(251, 229, 199);
+  background: url('../images/school_night.png') no-repeat center/cover;
   opacity: 1;
   max-width: 1440px;
   overflow: hidden;
@@ -24,7 +24,7 @@
 
 #chara {
   position: relative;
-  top: -80px;
+  top: 0;
   left: 0;
   z-index: auto;
 }
@@ -38,7 +38,7 @@
 #chara img {
   position: absolute;
   max-width: 50%;
-  max-height: 1800px;
+  max-height: 1600px;
   right: 0;
   backface-visibility: hidden;
 }
@@ -84,7 +84,6 @@
   display: block;
   cursor: initial;
   margin-bottom: 0.3rem;
-  animation: none;
 }
 
 .reset {
